@@ -5,6 +5,7 @@
 CREATE SCHEMA IF NOT EXISTS  megaWarez_db DEFAULT CHARACTER SET utf8 ;
 USE   megaWarez_db;
 
+
 -- -----------------------------------------------------
 -- Table user
 -- -----------------------------------------------------
