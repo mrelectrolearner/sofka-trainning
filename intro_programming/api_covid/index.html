@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">CIFRAS COVID19</h1>
+    </div>
+    <div class="container">
+        <div class="list">
+            <label for=" ">Choose a contry:</label>
+            <select  id="contry_list">
+            </select>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped" id="tabla1"></table>
+        </div>
+    </div>
+    <script>
+        //stylizes the title
+        let title=document.getElementById("title")
+        title.style.color='red'
+        title.style.textAlign="center"
+
+
+        //Get the data about covid19 from the api
+        let contries_list=fetch("https://api.covid19api.com/summary").then(response=>response.json())
+
+        //Show a drop-down list of the contries use in the api
+        contries_list.then(
+            datos=>{
+             let contries=datos.Countries;
+             let contries_names
+             let select=document.getElementById("contry_list")
+             let k=0;
+             for(contry of contries){
+                contries_names+=` <option value=${k++}  >${contry.Country}</option>`;
+            
+             }   
+             select.innerHTML=contries_names;
+             select.addEventListener("change",()=>show_contry_info(contries))
+            
+            } 
+            
+        )
+
+        //show the contry information obtained from the api
+        function show_contry_info(country){
+            let select=document.getElementById("contry_list")
+            let contry_index=select.value;
+            
+            let contry_info_rows='<tr><th>Nombre</th><th>Muertes totales </th><th>fecha</th></tr>';
+            
+            contry_info_rows+=`<tr><td>${country[contry_index].Country}</td><td>${country[contry_index].TotalDeaths} </td><td>${country[contry_index].Date} </td></tr>`;
+            
+            document.getElementById("tabla1").innerHTML=contry_info_rows;
+        
+        }         
+         
+        
+    </script>
+</body>
+</html>
