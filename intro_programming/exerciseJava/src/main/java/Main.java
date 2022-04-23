@@ -20,16 +20,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
         User user=new User();
+        while (true){
+            System.out.println("Ingrese su nombre: ");
+            user.setName(scanner.next()) ;
 
-        System.out.println("Ingrese su nombre: ");
-        user.setName(scanner.next()) ;
+            System.out.println("Ingrese su celular: ");
+            user.setCellphone(scanner.nextInt());
 
-        System.out.println("Ingrese su celular: ");
-        user.setCellphone(scanner.nextInt());
+            System.out.println("Ingrese su edad: ");
+            user.setAge(scanner.nextInt());
 
-        System.out.println("Ingrese su edad: ");
-        user.setAge(scanner.nextInt());
+            System.out.println(user);
 
-        System.out.println(user);
+        }
+
+
     }
 }
