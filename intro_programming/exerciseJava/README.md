@@ -1,4 +1,5 @@
-Primer proyecto en java usando intelliJ IDEA
+# Primer proyecto en java usando intelliJ IDEA
+
 Realice un proyecto de java en Intellij IDE en donde se reciba por consola la siguiente información:
 
 - Nombre de usuario
