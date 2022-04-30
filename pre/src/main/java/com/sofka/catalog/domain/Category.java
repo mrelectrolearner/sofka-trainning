@@ -34,6 +34,7 @@ public class Category implements Serializable {
     @OneToMany(mappedBy = "category")
     private Set<Subcategory> subcategories = new LinkedHashSet<>();
 
+
     public Set<Subcategory> getSubcategories() {
         return subcategories;
     }
